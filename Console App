@@ -1,0 +1,41 @@
+using MultidimentionalVector;
+using System;
+
+namespace PZ2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            MyVector vector1 = new MyVector(0, 1, 2, 3, 4, 5);
+            Console.WriteLine(vector1);
+
+            MyVector vector2 = new MyVector(0, 0, 0, 0, 0, 0, 6);
+            Console.WriteLine(vector1 + vector2);
+
+            MyVector vector3 = new MyVector(0, 1);
+            Console.WriteLine(vector1 - vector3);
+
+            Console.WriteLine(vector1 * 10);
+
+            Console.WriteLine(vector1 ^ vector1);
+
+            string talkShow = vector1 == vector2 ? "TRUE" : "FALSE";
+            Console.WriteLine(talkShow);
+
+            talkShow = vector1 != vector2 ? "TRUE" : "FALSE";
+            Console.WriteLine(talkShow);
+
+            talkShow = vector1 < vector2 ? "TRUE" : "FALSE";
+            Console.WriteLine(talkShow);
+
+            talkShow = vector1 > vector2 ? "TRUE" : "FALSE";
+            Console.WriteLine(talkShow);
+
+            vector1[0] = 10;
+            Console.WriteLine(vector1);
+
+            Console.WriteLine(vector1[0]);
+        }
+    }
+}
