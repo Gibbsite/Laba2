@@ -1,0 +1,313 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace MultidimentionalVector.Tests
+{
+    [TestClass()]
+    public class MyVectorTests
+    {
+        [TestMethod()]
+        public void Adding_Two_1D_Vectors_Return_Vector()
+        {
+            MyVector vector1 = new MyVector(5);
+            MyVector vector2 = new MyVector(10);
+            MyVector vector3 = new MyVector(15);
+
+            MyVector vector4 = vector1 + vector2;
+
+            Assert.AreEqual(vector3.ToString(), vector4.ToString());
+        }
+        [TestMethod()]
+        public void Adding_Two_2D_Vectors_Return_Vector()
+        {
+            MyVector vector1 = new MyVector(1, 2);
+            MyVector vector2 = new MyVector(10, 20);
+            MyVector vector3 = new MyVector(11, 22);
+
+            MyVector vector4 = vector1 + vector2;
+
+            Assert.AreEqual(vector3.ToString(), vector4.ToString());
+        }
+        [TestMethod()]
+        public void Adding_Two_3D_Vectors_Return_Vector()
+        {
+            MyVector vector1 = new MyVector(1, 0, 3);
+            MyVector vector2 = new MyVector(0, 2, 0);
+            MyVector vector3 = new MyVector(1, 2, 3);
+
+            MyVector vector4 = vector1 + vector2;
+
+            Assert.AreEqual(vector3.ToString(), vector4.ToString());
+        }
+        [TestMethod()]
+        public void Adding_4D_And_5D_Vectors_Return_5D_Vector()
+        {
+            MyVector vector1 = new MyVector(1, 0, 3, 0, 5);
+            MyVector vector2 = new MyVector(0, 2, 0, 4, 0, 6);
+            MyVector vector3 = new MyVector(1, 2, 3, 4, 5, 6);
+
+            MyVector vector4 = vector1 + vector2;
+
+            Assert.AreEqual(vector3.ToString(), vector4.ToString());
+        }
+
+        [TestMethod()]
+        public void Subtraction_Two_Identical_1D_Vectors_Return_Vector_is_Empty()
+        {
+            MyVector vector1 = new MyVector(1);
+            MyVector vector2 = new MyVector(1);
+            MyVector vector3 = new MyVector(0);
+
+            MyVector vector4 = vector1 - vector2;
+
+            Assert.AreEqual("Vector is empty", vector4.ToString());
+        }
+        [TestMethod()]
+        public void Subtraction_Two_2D_Vectors_Return_Vector()
+        {
+            MyVector vector1 = new MyVector(0, 190);
+            MyVector vector2 = new MyVector(190, 0);
+            MyVector vector3 = new MyVector(-190, 190);
+
+            MyVector vector4 = vector1 - vector2;
+
+            Assert.AreEqual(vector3.ToString(), vector4.ToString());
+        }
+        [TestMethod()]
+        public void Subtraction_Two_3D_Vectors_Return_Vector()
+        {
+            MyVector vector1 = new MyVector(0, 190, 200);
+            MyVector vector2 = new MyVector(190, 0, 10);
+            MyVector vector3 = new MyVector(-190, 190, 190);
+
+            MyVector vector4 = vector1 - vector2;
+
+            Assert.AreEqual(vector3.ToString(), vector4.ToString());
+        }
+        [TestMethod()]
+        public void Subtraction_4D_And_5D_Vectors_Return_Vector()
+        {
+            MyVector vector1 = new MyVector(0, 190, 200, -100);
+            MyVector vector2 = new MyVector(190, 0, 10, -290, 100);
+            MyVector vector3 = new MyVector(-190, 190, 190, 190, -100);
+
+            MyVector vector4 = vector1 - vector2;
+
+            Assert.AreEqual(vector3.ToString(), vector4.ToString());
+        }
+
+        [TestMethod()]
+        public void Multiplication_1D_Vector_By_A_Number_Return_Vector()
+        {
+            MyVector vector1 = new MyVector(1);
+            int num = 10;
+            MyVector vector2 = new MyVector(10);
+
+            MyVector vector3 = vector1 * num;
+
+            Assert.AreEqual(vector2.ToString(), vector3.ToString());
+        }
+        [TestMethod()]
+        public void Multiplication_2D_Vector_By_A_Number_Return_Vector()
+        {
+            MyVector vector1 = new MyVector(1, 0);
+            int num = 10;
+            MyVector vector2 = new MyVector(10, 0);
+
+            MyVector vector3 = vector1 * num;
+
+            Assert.AreEqual(vector2.ToString(), vector3.ToString());
+        }
+        [TestMethod()]
+        public void Multiplication_Empty_3D_Vector_By_A_Number_Return_Vector_Is_Empty()
+        {
+            MyVector vector1 = new MyVector(0, 0, 0);
+            int num = 10;
+
+            MyVector vector2 = vector1 * num;
+
+            Assert.AreEqual("Vector is empty", vector2.ToString());
+        }
+        [TestMethod()]
+        public void Multiplication_4D_Vector_By_A_Number_Return_Vector()
+        {
+            MyVector vector1 = new MyVector(0, 10, 0, -10);
+            int num = 10;
+            MyVector vector2 = new MyVector(0, 100, 0, -100);
+
+            MyVector vector3 = vector1 * num;
+
+            Assert.AreEqual(vector2.ToString(), vector3.ToString());
+        }
+
+        [TestMethod()]
+        public void Scalar_Product_Two_1D_Vectors_Return_Int()
+        {
+            MyVector vector1 = new MyVector(20);
+            MyVector vector2 = new MyVector(1);
+            int scalarProduct = 20;
+
+            int result = vector1 ^ vector2;
+
+            Assert.AreEqual(scalarProduct, result);
+        }
+        [TestMethod()]
+        public void Scalar_Product_Two_2D_Vectors_Return_Int()
+        {
+            MyVector vector1 = new MyVector(0, 2000000);
+            MyVector vector2 = new MyVector(2000000, 0);
+            int scalarProduct = 0;
+
+            int result = vector1 ^ vector2;
+
+            Assert.AreEqual(scalarProduct, result);
+        }
+        [TestMethod()]
+        public void Scalar_Product_Two_3D_Vectors_Return_Int()
+        {
+            MyVector vector1 = new MyVector(0, 2000000, 200);
+            MyVector vector2 = new MyVector(2000000, 0, 200);
+            int scalarProduct = 40000;
+
+            int result = vector1 ^ vector2;
+
+            Assert.AreEqual(scalarProduct, result);
+        }
+        [TestMethod()]
+        public void Scalar_Product_Two_4D_Vectors_Return_Int()
+        {
+            MyVector vector1 = new MyVector(0, 2000000, 200, 1);
+            MyVector vector2 = new MyVector(2000000, 0, 200, 1);
+            int scalarProduct = 40001;
+
+            int result = vector1 ^ vector2;
+
+            Assert.AreEqual(scalarProduct, result);
+        }
+
+        [TestMethod()]
+        public void Indexer_Set_Int_To_Zero_Return_Right_Vector()
+        {
+            MyVector vector1 = new MyVector(1, 2, 3, 0, 5);
+            MyVector vector2 = new MyVector(1, 2, 3, 4, 5);
+
+            vector1[3] = 4;
+
+            Assert.AreEqual(vector2.ToString(), vector1.ToString());
+        }
+
+        [TestMethod()]
+        public void Indexer_Set_Int_To_Nonzero_Return_Right_Vector()
+        {
+            MyVector vector1 = new MyVector(1, 2, 3, 0, 5);
+            MyVector vector2 = new MyVector(1, 2, 4, 0, 5);
+
+            vector1[2] = 4;
+
+            Assert.AreEqual(vector2.ToString(), vector1.ToString());
+        }
+        [TestMethod()]
+        public void Indexer_Set_Int_To_Nonzero_Get_Same_Index()
+        {
+            MyVector vector1 = new MyVector(1, 2, 3, 0, 5);
+            MyVector vector2 = new MyVector(1, 2, 4, 0, 5);
+
+            vector1[2] = 4;
+
+            Assert.AreEqual(4, vector1[2]);
+        }
+        [TestMethod()]
+        public void Indexer_Set_Int_To_Nonzero_Get_Another_Index()
+        {
+            MyVector vector1 = new MyVector(1, 2, 3, 0, 5);
+            MyVector vector2 = new MyVector(1, 2, 4, 0, 5);
+
+            vector1[2] = 4;
+
+            Assert.AreEqual(0, vector1[3]);
+        }
+
+        [TestMethod()]
+        public void Operator_Overload_Equal_Return_True()
+        {
+            MyVector vector1 = new MyVector(1, 2, 3, 0);
+            MyVector vector2 = new MyVector(1, 2, 3, 0);
+
+            bool equal = vector1 == vector2;
+
+            Assert.IsTrue(equal);
+        }
+        [TestMethod()]
+        public void Operator_Overload_Equal_Return_False()
+        {
+            MyVector vector1 = new MyVector(1, 2, 3, 0);
+            MyVector vector2 = new MyVector(1, 2, 3, 4);
+
+            bool equal = vector1 == vector2;
+
+            Assert.IsFalse(equal);
+        }
+        
+        [TestMethod()]
+        public void Operator_Overload_Not_Equal_Return_True()
+        {
+            MyVector vector1 = new MyVector(1, 2, 3, 0);
+            MyVector vector2 = new MyVector(1, 2, 3, 4);
+
+            bool equal = vector1 != vector2;
+
+            Assert.IsTrue(equal);
+        }
+        
+        [TestMethod()]
+        public void Operator_Overload_Not_Equal_Return_False()
+        {
+            MyVector vector1 = new MyVector(1, 2, 3, 4);
+            MyVector vector2 = new MyVector(1, 2, 3, 4);
+
+            bool equal = vector1 != vector2;
+
+            Assert.IsFalse(equal);
+        }
+        
+        [TestMethod()]
+        public void Operator_Overload_Bigger_Return_True()
+        {
+            MyVector vector1 = new MyVector(1, 2, 3);
+            MyVector vector2 = new MyVector(1, 2);
+
+            bool bigger = vector1 > vector2;
+
+            Assert.IsTrue(bigger);
+        }
+        [TestMethod()]
+        public void Operator_Overload_Bigger_Return_False()
+        {
+            MyVector vector1 = new MyVector(1, 2, 3);
+            MyVector vector2 = new MyVector(1, 2, 3, 4);
+
+            bool bigger = vector1 > vector2;
+
+            Assert.IsFalse(bigger);
+        }
+        [TestMethod()]
+        public void Operator_Overload_Smaller_Return_True()
+        {
+            MyVector vector1 = new MyVector(1, 2, 3);
+            MyVector vector2 = new MyVector(1, 2, 3, 4);
+
+            bool smaller = vector1 < vector2;
+
+            Assert.IsTrue(smaller);
+        }
+        [TestMethod()]
+        public void Operator_Overload_Smaller_Return_False()
+        {
+            MyVector vector1 = new MyVector(1, 2, 3, 4, 5);
+            MyVector vector2 = new MyVector(1, 2, 3, 4);
+
+            bool smaller = vector1 < vector2;
+
+            Assert.IsFalse(smaller);
+        }
+    }
+} 
